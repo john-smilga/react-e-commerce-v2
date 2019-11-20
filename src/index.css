@@ -1,13 +1,457 @@
-body {
+/* 
+====== 
+Fonts
+======
+*/
+@import url("https://fonts.googleapis.com/css?family=Catamaran:300,400|Kaushan+Script&display=swap");
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --primaryColor: #9e3aa3;
+  --primaryDarkColor: #4e1d51;
+  --primaryFont: "Catamaran", sans-serif;
+  --slantedFont: "Kaushan Script", cursive;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBackground: rgb(250, 245, 243);
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 85vw;
+  --maxWidth: 35rem;
+  --fullWidth: 1170px;
+}
+/* 
+====== 
+Global Styles 
+======
+*/
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  font-family: var(--primaryFont);
+  color: var(--mainBlack);
+  background: var(--mainBackground);
+  line-height: 1.4;
+  font-size: 1rem;
+  font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--slantedFont);
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--mainSpacing);
+}
+p {
+  margin-bottom: 1.25rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
+img {
+  width: 100%;
+  display: block;
+}
+.loading {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 2.3rem;
+  margin-top: 3rem;
+  letter-spacing: var(--mainSpacing);
+}
+/* 
+====== 
+Buttons 
+======
+*/
+.btn,
+.btn-white,
+.btn-primary {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+}
+.btn:hover {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+}
+.btn-white {
+  background: transparent;
+  color: var(--mainWhite);
+  border-color: var(--mainWhite);
+}
+.btn-white:hover {
+  background: var(--mainWhite);
+  color: var(--primaryColor);
+}
+.btn-primary {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  border-color: var(--primaryColor);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--primaryColor);
+}
+.btn-block {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: var(--lightShadow);
+  text-align: center;
+}
+/* 
+====== 
+Header
+======
+*/
+.header {
+  padding: 2rem 0;
+}
+.logo {
+  margin: 0 auto;
+  width: 9rem;
+}
+.header ul {
+  display: flex;
+  justify-content: space-between;
+  width: var(--smallWidth);
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: var(--maxWidth);
+}
+.header ul div {
+  display: flex;
+}
+.header a {
+  text-transform: capitalize;
+  margin: 0 0.25rem;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  transition: var(--mainTransition);
+}
+.header a:hover {
+  color: var(--primaryColor);
+}
+@media screen and (min-width: 768px) {
+  .header a {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+}
+/* 
+====== 
+Hero
+======
+*/
+.hero {
+  min-height: calc(65vh);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url("./assets/mainBcg.jpeg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primaryDarkColor);
+}
+.banner {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+}
+.hero h1 {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+.hero p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1.75rem;
+}
+.btn-hero {
+  border-radius: 0;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  background: var(--primaryDarkColor);
+  border-color: var(--primaryDarkColor);
+}
+.btn-hero:hover {
+  color: var(--primaryDarkColor);
+}
+@media screen and (min-width: 768px) {
+  .banner {
+    margin-top: 0;
+  }
+
+  .hero h1 {
+    font-size: 5.3rem;
+  }
+  .hero p {
+    font-size: 2.3rem;
+  }
+  .btn-hero {
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+  }
+}
+/* 
+====== 
+About
+======
+*/
+.about-section {
+  width: var(--smallWidth);
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+}
+.about-section p {
+  line-height: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+/* 
+====== 
+Error
+======
+*/
+.error-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+.error-container {
+  text-align: center;
+  text-transform: capitalize;
+}
+/* 
+====== 
+Product List
+======
+*/
+
+.section {
+  padding: 4rem 0;
+}
+.section-title {
+  font-size: 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.products-center {
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  column-gap: 1.8rem;
+  row-gap: 1.8rem;
+  /* align-items: start; */
+}
+.product {
+  background: var(--mainWhite);
+  margin-bottom: 2rem;
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.product:hover {
+  box-shadow: var(--darkShadow);
+}
+.img-container {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.5);
+  position: relative;
+  /* height: 5rem; */
+}
+.product img {
+  transition: var(--mainTransition);
+}
+.product:hover img {
+  opacity: 0.3;
+}
+.product-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: var(--mainTransition);
+}
+.product:hover .product-link {
+  opacity: 1;
+}
+.product-footer {
+  padding: 0rem 1rem 1rem 1rem;
+  text-align: center;
+  letter-spacing: var(--mainSpacing);
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.product-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.product-price {
+  color: var(--primaryColor);
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+/* 
+====== 
+Single Product
+======
+*/
+
+.single-product {
+  width: var(--smallWidth);
+  max-width: var(--fullWidth);
+  margin: 4rem auto;
+}
+
+.single-product article {
+  margin-bottom: 3rem;
+}
+.single-product-image {
+  max-width: 17rem;
+  align-self: center;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+.single-product h1 {
+  text-transform: capitalize;
+  font-size: 2.3rem;
+  letter-spacing: var(--mainSpacing);
+}
+.single-product h2 {
+  color: var(--primaryColor);
+}
+.single-product p {
+  line-height: 2;
+  letter-spacing: 1px;
+}
+@media screen and (min-width: 992px) {
+  .single-product {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 3rem;
+  }
+}
+/* 
+====== 
+Cart
+======
+*/
+.empty-cart {
+  text-align: center;
+  margin-top: 2rem;
+  text-transform: capitalize;
+}
+.cart-items {
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+}
+.cart-items h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+.cart-item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.cart-item img {
+  width: 5rem;
+}
+.cart-item h4 {
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 0;
+}
+.cart-item h5 {
+  margin: 0.5rem 0;
+  letter-spacing: var(--mainSpacing);
+}
+.item-amount {
+  text-align: center;
+  margin-bottom: 0;
+}
+.cart-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.remove-btn {
+  color: var(--darkGrey);
+  letter-spacing: var(--mainSpacing);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.amount-btn {
+  color: var(--primaryColor);
+  font-size: 1rem;
+}
+/* 
+====== 
+Cart Link
+======
+*/
+.cart-link-container {
+  position: relative;
+}
+.cart-link-container a {
+  margin-right: 10px;
+  font-weight: bolder;
+}
+.cart-link-total {
+  display: block;
+  position: absolute;
+  background: var(--primaryColor);
+  top: -10px;
+  right: -10px;
+  padding: 0rem 0.4rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--mainWhite);
 }
