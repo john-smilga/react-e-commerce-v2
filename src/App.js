@@ -12,9 +12,11 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 // import header
 import Header from "./components/Header";
+import Alert from "./components/Alert";
 function App() {
   return (
     <Router>
+      <Alert />
       <Header />
       <Switch>
         <Route exact path="/">

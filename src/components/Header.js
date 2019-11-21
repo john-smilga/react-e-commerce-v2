@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import CartLink from "./CartLink";
+import LoginLink from "./LoginLink";
 export default function Header() {
   return (
     <header className="header">
@@ -21,7 +22,7 @@ export default function Header() {
           </div>
           <div>
             <li>
-              <Link to="/login">login</Link>
+              <LoginLink />
             </li>
             <li>
               <CartLink />
