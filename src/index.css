@@ -56,7 +56,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--slantedFont);
+  font-family: var(--primaryFont);
   margin-bottom: 1.25rem;
   letter-spacing: var(--mainSpacing);
 }
@@ -248,7 +248,6 @@ Error
 .error-page {
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
 }
 .error-container {
   text-align: center;
@@ -380,7 +379,6 @@ Cart
 */
 .empty-cart {
   text-align: center;
-  margin-top: 2rem;
   text-transform: capitalize;
 }
 .cart-items {
