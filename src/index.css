@@ -455,3 +455,63 @@ Cart Link
   font-size: 1rem;
   color: var(--mainWhite);
 }
+/* 
+====== 
+Login Form
+======
+*/
+.form {
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+}
+.login-form,
+.checkout-form {
+  background: var(--mainWhite);
+  padding: 1.25rem 1rem;
+  text-transform: capitalize;
+  border-radius: var(--mainBorderRadius);
+  box-shadow: var(--lightShadow);
+}
+
+.form-control label {
+  display: block;
+}
+.form-control input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--darkGrey);
+  margin-bottom: 1.25rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+.form-empty,
+.stripe-errors {
+  text-align: center;
+  color: var(--mainRed);
+}
+.register-link {
+  margin-bottom: 0;
+  margin-top: 1rem;
+  text-align: center;
+}
+.register-link button {
+  background: transparent;
+  border: none;
+  color: var(--primaryColor);
+  text-transform: capitalize;
+  font-size: inherit;
+  display: inline-block;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.disabled {
+  color: var(--mainWhite);
+  background: var(--darkGrey);
+  border-color: var(--darkGrey);
+}
+.disabled:hover {
+  background: transparent;
+  color: var(--darkGrey);
+  border-color: var(--darkGrey);
+}
