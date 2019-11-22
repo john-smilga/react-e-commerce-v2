@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import CartLink from "./CartLink";
 import LoginLink from "./LoginLink";
+import { UserContext } from "../context/user";
 export default function Header() {
+  const { user } = React.useContext(UserContext);
   return (
     <header className="header">
       <img src={logo} className="logo" alt="company logo" />
@@ -19,6 +21,11 @@ export default function Header() {
             <li>
               <Link to="/products">products</Link>
             </li>
+            {user.token && (
+              <li>
+                <Link to="/checkout">checkout</Link>
+              </li>
+            )}
           </div>
           <div>
             <li>

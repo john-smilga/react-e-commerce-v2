@@ -16,15 +16,19 @@ function UserProvider({ children }) {
   };
   const userLogout = () => {
     setUser({ username: null, token: null });
-    localStorage.clear();
+    localStorage.removeItem("user");
   };
   // alert
-  const [alert, setAlert] = React.useState(null);
-  const showAlert = ({ text, color }) => {
-    setAlert({ text, color });
+  const [alert, setAlert] = React.useState({
+    show: false,
+    msg: "",
+    type: "success"
+  });
+  const showAlert = ({ msg, type = "success" }) => {
+    setAlert({ show: true, msg, type });
   };
   const hideAlert = () => {
-    setAlert(null);
+    setAlert({ ...alert, show: false });
   };
   return (
     <UserContext.Provider

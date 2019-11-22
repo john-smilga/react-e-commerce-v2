@@ -28,7 +28,7 @@ Variables
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
   --mainBorderRadius: 0.25rem;
   --smallWidth: 85vw;
-  --maxWidth: 35rem;
+  --maxWidth: 40rem;
   --fullWidth: 1170px;
 }
 /* 
@@ -548,14 +548,14 @@ Alert
 */
 .alert-container {
   position: fixed;
-  top: 0%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  visibility: hidden;
+  display: none;
   z-index: 10;
   background: green;
-  width: 23rem;
-  padding: 2.5rem 1rem;
+  width: 24rem;
+  padding: 2.5rem 1.5rem;
   text-align: center;
   color: var(--mainWhite);
   font-size: 1.2rem;
@@ -566,10 +566,7 @@ Alert
   transition: all 0.3s linear;
 }
 .alert-show {
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  visibility: visible;
+  display: block;
 }
 .alert-center {
   position: relative;

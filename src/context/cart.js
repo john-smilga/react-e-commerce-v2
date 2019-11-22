@@ -16,19 +16,17 @@ function CartProvider({ children }) {
 
   React.useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-    if (cart.length > 0) {
-      // cart total
-      let newTotal = cart.reduce((total, cartItem) => {
-        return (total += cartItem.amount * cartItem.price);
-      }, 0);
-      newTotal = parseFloat(newTotal.toFixed(2));
-      setTotal(newTotal);
-      // cart items
-      let newCartItems = cart.reduce((total, cartItem) => {
-        return (total += cartItem.amount);
-      }, 0);
-      setCartItems(newCartItems);
-    }
+
+    let newTotal = cart.reduce((total, cartItem) => {
+      return (total += cartItem.amount * cartItem.price);
+    }, 0);
+    newTotal = parseFloat(newTotal.toFixed(2));
+    setTotal(newTotal);
+    // cart items
+    let newCartItems = cart.reduce((total, cartItem) => {
+      return (total += cartItem.amount);
+    }, 0);
+    setCartItems(newCartItems);
   }, [cart]);
 
   //  helper function
@@ -79,6 +77,9 @@ function CartProvider({ children }) {
     }
     setCart(newCart);
   };
+  const clearCart = () => {
+    setCart([]);
+  };
   return (
     <CartContext.Provider
       value={{
@@ -88,7 +89,8 @@ function CartProvider({ children }) {
         removeItem,
         increaseAmount,
         decreaseAmount,
-        addToCart
+        addToCart,
+        clearCart
       }}
     >
       {children}

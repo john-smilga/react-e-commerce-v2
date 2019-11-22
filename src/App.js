@@ -13,6 +13,7 @@ import ProductDetails from "./pages/ProductDetails";
 // import header
 import Header from "./components/Header";
 import Alert from "./components/Alert";
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <Router>
@@ -31,9 +32,9 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/checkout">
+        <PrivateRoute path="/checkout" name="john">
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/products">
           <Products />
         </Route>

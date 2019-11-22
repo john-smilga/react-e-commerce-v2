@@ -9,14 +9,14 @@ export default function Login() {
   // react router history
   const history = useHistory();
   // login user
-  const { userLogin, showAlert } = React.useContext(UserContext);
+  const { userLogin, showAlert, alert } = React.useContext(UserContext);
   // input fields
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("default");
   const [isMember, setIsMember] = React.useState(true);
   // empty form fields
-  let isEmpty = !email || !password || !username;
+  let isEmpty = !email || !password || !username || alert.show;
   // handle member
   const toggleMember = () => {
     setIsMember(prevMember => {
@@ -27,6 +27,9 @@ export default function Login() {
   };
 
   const handleSubmit = async e => {
+    showAlert({
+      msg: "accesing user data. please wait..."
+    });
     e.preventDefault();
     let response;
 
@@ -42,9 +45,15 @@ export default function Login() {
       } = response.data;
       const newUser = { token, username };
       userLogin(newUser);
-      showAlert({ text: "hello world" });
-      history.push("/");
+      showAlert({
+        msg: `you are logged in : ${username}. shop away my friend!`
+      });
+      history.push("/products");
     } else {
+      showAlert({
+        msg: "there was an error. please try again...",
+        type: "danger"
+      });
     }
   };
 
