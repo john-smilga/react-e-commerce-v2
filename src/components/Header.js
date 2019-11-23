@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
-import CartLink from "./CartLink";
+import CartLink from "./Cart/CartLink";
 import LoginLink from "./LoginLink";
 import { UserContext } from "../context/user";
 export default function Header() {
