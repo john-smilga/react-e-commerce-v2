@@ -16,18 +16,25 @@ function CartProvider({ children }) {
 
   React.useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+    calculateCartTotal();
+    calculateCartItems();
+  }, [cart]);
 
+  // local functions
+  function calculateCartTotal() {
     let newTotal = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount * cartItem.price);
     }, 0);
     newTotal = parseFloat(newTotal.toFixed(2));
     setTotal(newTotal);
+  }
+  function calculateCartItems() {
     // cart items
     let newCartItems = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount);
     }, 0);
     setCartItems(newCartItems);
-  }, [cart]);
+  }
 
   // global functions
   const removeItem = id => {
