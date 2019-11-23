@@ -29,53 +29,44 @@ function CartProvider({ children }) {
     setCartItems(newCartItems);
   }, [cart]);
 
-  //  helper function
-
-  const remove = (id, items) => {
-    return items.filter(item => item.id !== id);
-  };
-  const toggleAmount = (id, items, action) => {
-    return items.map(item => {
-      let newAmount;
-      if (action === "inc") {
-        newAmount = item.amount + 1;
-      } else if (action === "dec") {
-        newAmount = item.amount - 1;
-      } else {
-        newAmount = item.amount;
-      }
-      return item.id === id ? { ...item, amount: newAmount } : { ...item };
-    });
-  };
   // global functions
   const removeItem = id => {
-    let newCart = remove(id, [...cart]);
-    setCart(newCart);
+    setCart([...cart].filter(item => item.id !== id));
   };
   const increaseAmount = id => {
-    let newCart = toggleAmount(id, [...cart], "inc");
+    const newCart = [...cart].map(item => {
+      return item.id === id
+        ? { ...item, amount: item.amount + 1 }
+        : { ...item };
+    });
     setCart(newCart);
   };
   const decreaseAmount = (id, amount) => {
-    let newCart;
     if (amount === 1) {
-      newCart = remove(id, [...cart]);
+      removeItem(id);
+      return;
     } else {
-      newCart = toggleAmount(id, [...cart], "dec");
+      const newCart = [...cart].map(item => {
+        return item.id === id
+          ? { ...item, amount: item.amount - 1 }
+          : { ...item };
+      });
+
+      setCart(newCart);
     }
-    setCart(newCart);
   };
   const addToCart = product => {
     const { id, image, title, price } = product;
-    let item = [...cart].find(item => item.id === id);
-    let newCart;
+    const item = [...cart].find(item => item.id === id);
+
     if (item) {
-      newCart = toggleAmount(id, [...cart], "inc");
+      increaseAmount(id);
+      return;
     } else {
-      let newItem = { id, image, title, price, amount: 1 };
-      newCart = [...cart, newItem];
+      const newItem = { id, image, title, price, amount: 1 };
+      const newCart = [...cart, newItem];
+      setCart(newCart);
     }
-    setCart(newCart);
   };
   const clearCart = () => {
     setCart([]);
