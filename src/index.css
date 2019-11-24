@@ -10,13 +10,15 @@ Variables
 ======
 */
 :root {
-  --primaryColor: #9e3aa3;
-  --primaryDarkColor: #4e1d51;
+  /* --primaryColor: #9e3aa3; */
+  /* --primaryDarkColor: #4e1d51; */
+  --primaryColor: #f15025;
+  --primaryDarkColor: #c02c03;
   --primaryFont: "Catamaran", sans-serif;
   --slantedFont: "Kaushan Script", cursive;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
-  --mainBackground: rgb(250, 245, 243);
+  --mainBackground: #ececec;
   --mainOverlay: rgba(35, 10, 36, 0.4);
   --mainBlack: #222;
   --mainGrey: #ececec;
@@ -177,8 +179,9 @@ Hero
 .hero {
   min-height: calc(65vh);
   background: linear-gradient(
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.3)
+      to right,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(255, 255, 255, 0.1)
     ),
     url("./assets/mainBcg.jpeg") center/cover no-repeat;
   display: flex;
@@ -206,6 +209,7 @@ Hero
   padding: 0.8rem 1.5rem;
   background: var(--primaryDarkColor);
   border-color: var(--primaryDarkColor);
+  color: var(--mainBlack);
 }
 .btn-hero:hover {
   color: var(--primaryDarkColor);
