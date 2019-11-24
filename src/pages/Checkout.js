@@ -14,12 +14,13 @@ function CheckoutPage(props) {
   // cart context
   const { cart, total, clearCart } = React.useContext(CartContext);
 
-  const { user, showAlert, hideAlert } = React.useContext(UserContext);
+  const { user, showAlert, hideAlert, alert } = React.useContext(UserContext);
   const history = useHistory();
   // name field
   const [name, setName] = React.useState("");
   const [error, setError] = React.useState("");
   // handle submit
+  const isEmpty = !name || alert.show;
   async function handleSubmit(e) {
     showAlert({ msg: "submitting order... please wait!" });
     e.preventDefault();
@@ -61,15 +62,25 @@ function CheckoutPage(props) {
   if (cart.length === 0) return <EmptyCart />;
 
   return (
-    <>
-      <form>
-        <input
-          type="text"
-          value={name}
-          onChange={e => {
-            setName(e.target.value);
-          }}
-        />
+    <section className="form">
+      <h2 className="section-title">checkout</h2>
+      <form className="checkout-form">
+        <h3>
+          order total : <span> ${total}</span>
+        </h3>
+        {/* single input */}
+        <div className="form-control">
+          <label htmlFor="name">your name</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={e => {
+              setName(e.target.value);
+            }}
+          />
+        </div>
+        {/* end of single input  */}
         {/* card element */}
         <div className="stripe-input">
           <label htmlFor="card-element">Credit or Debit Card</label>
@@ -82,14 +93,24 @@ function CheckoutPage(props) {
           </p>
         </div>
         {/* card element */}
-        <CardElement></CardElement>
+        <CardElement className="card-element"></CardElement>
+        {/*end of  card element */}
         {/* stripe errors */}
-        {error && <p>{error}</p>}
-        <button type="submit" onClick={handleSubmit}>
-          submit
-        </button>
+        {error && <p className="form-empty">{error}</p>}
+        {/* empty value */}
+        {isEmpty ? (
+          <p className="form-empty">please fill out name field</p>
+        ) : (
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="btn btn-primary btn-block"
+          >
+            submit
+          </button>
+        )}
       </form>
-    </>
+    </section>
   );
 }
 

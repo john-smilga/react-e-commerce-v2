@@ -590,3 +590,33 @@ Alert
   cursor: pointer;
   line-height: 0;
 }
+/* 
+====== 
+Checkout
+======
+*/
+.checkout-form h3 span {
+  color: var(--primaryColor);
+}
+.stripe-info {
+  font-size: 80%;
+  margin-top: 0.5rem;
+  color: var(--darkGrey);
+}
+.stripe-info span {
+  color: var(--primaryColor);
+}
+
+.card-element {
+  border: 2px solid var(--darkGrey);
+  padding: 0.5rem;
+  font-size: 4rem;
+}
+
+.checkout-form .form-empty {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.checkout-form button {
+  margin-top: 1rem;
+}

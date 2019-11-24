@@ -77,7 +77,6 @@ function CartProvider({ children }) {
         cart,
         cartItems,
         total,
-        total,
         removeItem,
         increaseAmount,
         decreaseAmount,
