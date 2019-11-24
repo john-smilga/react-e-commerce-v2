@@ -62,7 +62,7 @@ function CheckoutPage(props) {
   if (cart.length === 0) return <EmptyCart />;
 
   return (
-    <section className="form">
+    <section className="section form">
       <h2 className="section-title">checkout</h2>
       <form className="checkout-form">
         <h3>
