@@ -79,9 +79,13 @@ img {
 .loading {
   text-transform: capitalize;
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 1.7rem;
   margin-top: 3rem;
   letter-spacing: var(--mainSpacing);
+}
+.loading img {
+  width: 10rem;
+  margin: 0 auto;
 }
 /* 
 ====== 
@@ -353,7 +357,7 @@ Single Product
   margin-bottom: 3rem;
 }
 .single-product-image {
-  max-width: 17rem;
+  max-width: 25rem;
   align-self: center;
   margin: 0 auto;
   margin-bottom: 2rem;
@@ -615,6 +619,7 @@ Checkout
   border: 2px solid var(--darkGrey);
   padding: 0.5rem;
   font-size: 4rem;
+  border-radius: var(--mainBorderRadius);
 }
 
 .checkout-form .form-empty {
